@@ -3,9 +3,9 @@ package me.javamail.utils;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 public class JDBCUtils {
-	private static String url = "jdbc:mysql://localhost:3306/test";
+    private static String url = "jdbc:mysql://localhost:3306/test";
     private static String user = "root";
-    private static String passwd = "ZR610327";
+    private static String passwd = "******";
     private static String driver = "com.mysql.jdbc.Driver";
    
 	public static ComboPooledDataSource getDataSource() throws Exception{
