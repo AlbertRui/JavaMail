@@ -35,6 +35,7 @@ POP3:全名为"Post Office Protocol - Version 3"即"邮局协议版本3",是TCP/
 ### 邮件客户端软件的安装和配置:
 
 常见的邮件客户端软件有outlook(微软的,收费)和foxmail(免费)
+
 foxmail下载地址：https://github.com/AlbertRui/JavaMail/blob/master/software/FoxmailSetup_7.2.9.115.exe
 
 在使用foxmail时需要填写邮箱账号信息(可以是网络邮箱(如QQ,新浪等)或在本地易邮邮箱服务器中的邮箱账号),在本地邮箱账号设置需注意:
