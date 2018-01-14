@@ -7,6 +7,11 @@ import me.javamail.dao.UserDao;
 import me.javamail.domain.User;
 import me.javamail.utils.JDBCUtils;
 
+/**
+ * UserDao的具体实现类
+ * @author Administrator
+ *
+ */
 public class UserDaoImpl implements UserDao {
 
 	/**

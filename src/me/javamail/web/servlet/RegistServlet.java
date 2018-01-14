@@ -21,7 +21,8 @@ public class RegistServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
-	/* (non-Javadoc)
+	/**
+	 * (non-Javadoc)
 	 * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
 	 */
 	@Override
@@ -56,6 +57,9 @@ public class RegistServlet extends HttpServlet {
 		}
 	}
 
+	/**
+	 * 这里调用doGet方法
+	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

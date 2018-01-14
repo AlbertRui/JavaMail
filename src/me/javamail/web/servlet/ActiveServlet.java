@@ -11,6 +11,11 @@ import me.javamail.domain.User;
 import me.javamail.service.UserService;
 import me.javamail.service.impl.UserServiceImpl;
 
+/**
+ * 实现用户激活业务逻辑的Servlet
+ * @author Administrator
+ *
+ */
 public class ActiveServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
@@ -41,6 +46,9 @@ public class ActiveServlet extends HttpServlet{
 		}
 	}
 
+	/**
+	 * 调用doGet方法
+	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);

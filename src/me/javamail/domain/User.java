@@ -1,7 +1,7 @@
 package me.javamail.domain;
 
 /**
- * ÓÃ»§ÊµÌåÀà¶ÔÏó
+ * ç”¨æˆ·å®ä½“ç±»
  * 
  * @author Administrator
  *
