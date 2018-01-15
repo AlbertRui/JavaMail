@@ -22,7 +22,7 @@ SMTP(Simple Mail Transfer Protocol)即简单邮件传输协议,它是一组用�
 POP3:全名为"Post Office Protocol - Version 3"即"邮局协议版本3",是TCP/IP协议族中的一员,由RFC1939定义,本协议主要用于支持使用客户端远程管理在服务器上的电子邮件,提供了SSL加密的POP3协议被称为POP3S,其默认端口号为110
 
 ### 邮件接收和发送过程图解: 
-![mail.png](https://github.com/AlbertRui/JavaMail/tree/master/WebRoot/images/mail.jpg)
+！【点击查看图解】（https://github.com/AlbertRui/JavaMail/tree/master/WebRoot/images/mail.jpg）
 
 ### 邮件服务器的安装和配置:
 
