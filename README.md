@@ -18,7 +18,7 @@ Java实现邮箱验证
 创建Session对象时可能需要的属性详细信息如下：
 <HTML>
 <body>
-	<talbe>
+	<table>
 		<tr>
 			<th width=20%, bgcolor=yellow >name</th>
 			<th width=8%, bgcolor=yellow>type</th>
