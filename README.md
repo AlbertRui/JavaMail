@@ -3,12 +3,13 @@ Java实现邮箱验证
 
 ### JavaMail的简单概述:
 
-&ensp&ensp JavaMail是SUN提供给开发人员在应用程序中实现邮件发送和接收功能而提供的一套标准开发类库，支持常用的邮件协议，如SMTP、POP3、IMAP，开发人员使用JavaMail编写邮件程序时，无需考虑底层的通信细节(Socket)，JavaMail也提供了能够创建出各种复杂MIME格式的邮件内容的API。使用JavaMail，我们可以实现类似OutLook、FoxMail的软件。虽然JavaMail(仅支持JDK4及以上)也是Java的API之一，但是却没有直接加入到JDK中，所以我们需要另行下载。另外，JavaMail依赖JAF(JavaBeans Activation Framework)，JAF在Java6之后已经合并到JDK中,我们可以基于JavaMail开发出类似于Microsoft Outlook的应用程序,现在很多Web开发都需要使用JavaMail,如:
+  JavaMail是SUN提供给开发人员在应用程序中实现邮件发送和接收功能而提供的一套标准开发类库，支持常用的邮件协议，如SMTP、POP3、IMAP，开发人员使用JavaMail编写邮件程序时，无需考虑底层的通信细节(Socket)，JavaMail也提供了能够创建出各种复杂MIME格式的邮件内容的API。使用JavaMail，我们可以实现类似OutLook、FoxMail的软件。虽然JavaMail(仅支持JDK4及以上)也是Java的API之一，但是却没有直接加入到JDK中，所以我们需要另行下载。另外，JavaMail依赖JAF(JavaBeans Activation Framework)，JAF在Java6之后已经合并到JDK中,我们可以基于JavaMail开发出类似于Microsoft Outlook的应用程序,现在很多Web开发都需要使用JavaMail,如:
 
 * 注册时发送激活邮件
 * 用户生日时发送祝福邮件
 * 软件发送给用户一些活动信息,等等........
-&ensp&ensp JavaMail包含两部分内容，一部分是JavaMail API，定义了一组平台无关、独立于通讯协议的邮件程序框架，该部分称为应用级接口，也就是供我们调用的部分，另一部分是service provider，该部分使用特定的协议语言来实现第一部分定义的抽象类和接口，这些协议包括：SMTP、NNTP、POP3、IMAP，如果让JavaMail与邮件服务器通信，就需要相应的协议支持，该部分称为服务提供者接口，也就是JavaMail自身需要的协议支持。在使用JavaMail时，通常我们只需将mail.jar放在classpath下使用，它包含了JavaMail API部分和SUN自己实现的service provider部分。可能也有特殊的时候，我们应用程序中需要自己实现service provider部分，那我们只需要mailapi.jar,下面通过几个类来简单认识下JavaMail API：
+
+  JavaMail包含两部分内容，一部分是JavaMail API，定义了一组平台无关、独立于通讯协议的邮件程序框架，该部分称为应用级接口，也就是供我们调用的部分，另一部分是service provider，该部分使用特定的协议语言来实现第一部分定义的抽象类和接口，这些协议包括：SMTP、NNTP、POP3、IMAP，如果让JavaMail与邮件服务器通信，就需要相应的协议支持，该部分称为服务提供者接口，也就是JavaMail自身需要的协议支持。在使用JavaMail时，通常我们只需将mail.jar放在classpath下使用，它包含了JavaMail API部分和SUN自己实现的service provider部分。可能也有特殊的时候，我们应用程序中需要自己实现service provider部分，那我们只需要mailapi.jar,下面通过几个类来简单认识下JavaMail API：
 ```java
     javax.mail.Session：上下文环境信息，如服务器的主机名、端口号、协议名称等  
     javax.mail.Message：邮件模型，发送邮件和接收邮件的媒介，封装了邮件的信息，如发件人、收件人、邮件标题、邮件内容等  
