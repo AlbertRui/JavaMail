@@ -3,33 +3,102 @@ Java实现邮箱验证
 
 ### JavaMail的简单概述:
 
-JavaMail是SUN提供给开发人员在应用程序中实现邮件发送和接收功能而提供的一套标准开发类库，支持常用的邮件协议，如SMTP、POP3、IMAP，开发人员使用JavaMail编写邮件程序时，无需考虑底层的通信细节(Socket)，JavaMail也提供了能够创建出各种复杂MIME格式的邮件内容的API。使用JavaMail，我们可以实现类似OutLook、FoxMail的软件。虽然JavaMail(仅支持JDK4及以上)也是Java的API之一，但是却没有直接加入到JDK中，所以我们需要另行下载。另外，JavaMail依赖JAF(JavaBeans Activation Framework)，JAF在Java6之后已经合并到JDK中,我们可以基于JavaMail开发出类似于Microsoft Outlook的应用程序,现在很多Web开发都需要使用JavaMail,如:
+&ensp&ensp JavaMail是SUN提供给开发人员在应用程序中实现邮件发送和接收功能而提供的一套标准开发类库，支持常用的邮件协议，如SMTP、POP3、IMAP，开发人员使用JavaMail编写邮件程序时，无需考虑底层的通信细节(Socket)，JavaMail也提供了能够创建出各种复杂MIME格式的邮件内容的API。使用JavaMail，我们可以实现类似OutLook、FoxMail的软件。虽然JavaMail(仅支持JDK4及以上)也是Java的API之一，但是却没有直接加入到JDK中，所以我们需要另行下载。另外，JavaMail依赖JAF(JavaBeans Activation Framework)，JAF在Java6之后已经合并到JDK中,我们可以基于JavaMail开发出类似于Microsoft Outlook的应用程序,现在很多Web开发都需要使用JavaMail,如:
 
 * 注册时发送激活邮件
 * 用户生日时发送祝福邮件
 * 软件发送给用户一些活动信息,等等........
-JavaMail包含两部分内容，一部分是JavaMail API，定义了一组平台无关、独立于通讯协议的邮件程序框架，该部分称为应用级接口，也就是供我们调用的部分，另一部分是service provider，该部分使用特定的协议语言来实现第一部分定义的抽象类和接口，这些协议包括：SMTP、NNTP、POP3、IMAP，如果让JavaMail与邮件服务器通信，就需要相应的协议支持，该部分称为服务提供者接口，也就是JavaMail自身需要的协议支持。在使用JavaMail时，通常我们只需将mail.jar放在classpath下使用，它包含了JavaMail API部分和SUN自己实现的service provider部分。可能也有特殊的时候，我们应用程序中需要自己实现service provider部分，那我们只需要mailapi.jar,下面通过几个类来简单认识下JavaMail API：
+&ensp&ensp JavaMail包含两部分内容，一部分是JavaMail API，定义了一组平台无关、独立于通讯协议的邮件程序框架，该部分称为应用级接口，也就是供我们调用的部分，另一部分是service provider，该部分使用特定的协议语言来实现第一部分定义的抽象类和接口，这些协议包括：SMTP、NNTP、POP3、IMAP，如果让JavaMail与邮件服务器通信，就需要相应的协议支持，该部分称为服务提供者接口，也就是JavaMail自身需要的协议支持。在使用JavaMail时，通常我们只需将mail.jar放在classpath下使用，它包含了JavaMail API部分和SUN自己实现的service provider部分。可能也有特殊的时候，我们应用程序中需要自己实现service provider部分，那我们只需要mailapi.jar,下面通过几个类来简单认识下JavaMail API：
 ```java
     javax.mail.Session：上下文环境信息，如服务器的主机名、端口号、协议名称等  
     javax.mail.Message：邮件模型，发送邮件和接收邮件的媒介，封装了邮件的信息，如发件人、收件人、邮件标题、邮件内容等  
     javax.mail.Transport：连接邮件SMTP服务器，发送邮件  
     javax.mail.Store：连接邮件POP3、IMAP服务器，收取邮件  
 ```
-创建Session对象时可能需要的属性详细信息如下：  
-|name			 |type	 |Description|
-|------------------------|:-----:|----------:|
-|||
-|mail.debug	         |boolean|The initial debug mode. Default is false.|
-|mail.from		 |String |The return email address of the current user, used by the InternetAddress methodgetLocalAddress.|
-|mail.mime.address.strict|boolean|The MimeMessage class uses the InternetAddress method parseHeader to parse headers in messages. This property controls the strict flag passed to theparseHeader method. The default is true.|
-|mail.host		 |String |The default host name of the mail server for both Stores and Transports. Used if themail.protocol.host property isn't set.|
-|mail.store.protocol	 |String |Specifies the default message access protocol. The Session methodgetStore() returns a Store object that implements this protocol. By default the first Store provider in the configuration files is returned.|
-|mail.transport.protocol |String |Specifies the default message transport protocol. The Session methodgetTransport() returns a Transport object that implements this protocol. By default the first Transport provider in the configuration files is returned.|
-|mail.user		 |String |The default user name to use when connecting to the mail server. Used if the mail.protocol.user property isn't set.|
-|mail.protocol.class	 |String |Specifies the fully qualified class name of the provider for the specified protocol. Used in cases where more than one provider for a given protocol exists; this property can be used to specify which provider to use by default. The provider must still be listed in a configuration file.|
-|mail.protocol.host	 |String |The host name of the mail server for the specified protocol. Overrides the mail.host property.|
-|mail.protocol.port	 |int	 |The port number of the mail server for the specified protocol. If not specified the protocol's default port number is used.|
-|mail.protocol.user	 |String |The user name to use when connecting to mail servers using the specified protocol. Overrides themail.user property. |
+创建Session对象时可能需要的属性详细信息如下：
+<HTML>
+<body>
+	<talbe>
+		<tr>
+			<th width=20%, bgcolor=yellow >name</th>
+			<th width=8%, bgcolor=yellow>type</th>
+			<th width="72%", bgcolor=yellow>Description</th>
+		</tr>
+		<tr>
+			<td>mail.debug</td>
+			<td>boolean</td>
+			<td>The initial debug mode. Default is false.</td>
+		</tr>
+		<tr>
+			<td>mail.from</td>
+			<td>String</td>
+			<td>The return email address of the current user, used by the <code>InternetAddress</code> method<code>getLocalAddress</code>.
+			</td>
+		</tr>
+		<tr>
+			<td>mail.mime.address.strict</td>
+			<td>boolean</td>
+			<td>The MimeMessage class uses the <code>InternetAddress</code> method <code>parseHeader</code> to parse headers in messages. This property controls the strict flag passed to the<code>parseHeader</code> method. The default is true.
+			</td>
+		</tr>
+		<tr>
+			<td>mail.host</td>
+			<td>String</td>
+			<td>The default host name of the mail server for both Stores and Transports. Used if the<code>
+					mail.<em>protocol</em>.host
+				</code> property isn't set.
+			</td>
+		</tr>
+		<tr>
+			<td>mail.store.protocol</td>
+			<td>String</td>
+			<td>Specifies the default message access protocol. The <code>Session</code> method<code>getStore()</code> returns a Store object that implements this protocol. By default the first Store provider in the configuration files is returned.
+			</td>
+		</tr>
+		<tr>
+			<td>mail.transport.protocol</td>
+			<td>String</td>
+			<td>Specifies the default message transport protocol. The <code>Session</code> method<code>getTransport()</code> returns a Transport object that implements this protocol. By default the first Transport provider in the configuration files is returned.
+			</td>
+		</tr>
+		<tr>
+			<td>mail.user</td>
+			<td>String</td>
+			<td>The default user name to use when connecting to the mail server. Used if the <code>
+					mail.<em>protocol</em>.user
+				</code> property isn't set.
+			</td>
+		</tr>
+		<tr>
+			<td>mail.<em>protocol</em>.class
+			</td>
+			<td>String</td>
+			<td>Specifies the fully qualified class name of the provider for the specified protocol. Used in cases where more than one provider for a given protocol exists; this property can be used to specify which provider to use by default. The provider must still be listed in a configuration file.</td>
+		</tr>
+		<tr>
+			<td>mail.<em>protocol</em>.host
+			</td>
+			<td>String</td>
+			<td>The host name of the mail server for the specified protocol. Overrides the <code>mail.host</code> property.
+			</td>
+		</tr>
+		<tr>
+			<td>mail.<em>protocol</em>.port
+			</td>
+			<td>int</td>
+			<td>The port number of the mail server for the specified protocol. If not specified the protocol's default port number is used.</td>
+		</tr>
+		<tr>
+			<td>mail.<em>protocol</em>.user
+			</td>
+			<td>String</td>
+			<td>The user name to use when connecting to mail servers using the specified protocol. Overrides the<code>mail.user</code> property.&nbsp;
+			</td>
+		</tr>
+	</table>
+</body>
+</HTML>
+
 ### 邮件开发中的基本术语介绍:
 
 * 电子邮箱:需要在邮箱服务器上进行申请的,相当于在服务器上给用户一个账号,然后给予对应的空间,使用这个空间进行发送和接受邮件
