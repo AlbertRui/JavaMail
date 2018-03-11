@@ -112,7 +112,7 @@
 ## 邮件服务器的安装和配置:
 
 * 下载和安装易邮邮件服务器[点击下载](https://github.com/AlbertRui/JavaMail/raw/master/software/eyoumailserversetup.exe)
-* 安装完成之后打开软件在工具选项卡中选服务器设置进行域名的设置,如store.com
+* 安装完成之后打开软件在工具选项卡中选服务器设置进行域名的设置,如`store.com`
 * 在账号选项卡中选新建账号表示在邮件服务器上添加邮件账号(其中账号名默认会添加@域名,如user@store.com)
 ## 邮件客户端软件的安装和配置:
 * 常见的邮件客户端软件有outlook(微软的,收费)和foxmail(免费)
